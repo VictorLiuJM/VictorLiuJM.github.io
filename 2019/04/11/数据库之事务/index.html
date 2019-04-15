@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="数据库,事务,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="在面试中, 当问到数据库的相关知识的时候, 事务是一个高频考点, 所以这部分知识需要熟练掌握.  什么是事务?对于一个概念, 首先应该知道是什么. 术语事务指的是构成单一逻辑工作单元的操作的集合. 比如 : 将钱从一个账户转到另一个账户就是一个事务. 在数据库中, 具体来说, 就是访问并可能更新各种数据项的一个程序执行单元 (unit).  事务通常由高级数据操纵语言( 代表性的是 SQL )或者">
+<meta name="keywords" content="数据库,事务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/04/07/hello-world/index.html">
+<meta property="og:title" content="数据库之事务">
+<meta property="og:url" content="http://yoursite.com/2019/04/11/数据库之事务/index.html">
 <meta property="og:site_name" content="苏打家的富贵">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="在面试中, 当问到数据库的相关知识的时候, 事务是一个高频考点, 所以这部分知识需要熟练掌握.  什么是事务?对于一个概念, 首先应该知道是什么. 术语事务指的是构成单一逻辑工作单元的操作的集合. 比如 : 将钱从一个账户转到另一个账户就是一个事务. 在数据库中, 具体来说, 就是访问并可能更新各种数据项的一个程序执行单元 (unit).  事务通常由高级数据操纵语言( 代表性的是 SQL )或者">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T12:31:00.415Z">
+<meta property="og:updated_time" content="2019-04-15T13:52:16.566Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="数据库之事务">
+<meta name="twitter:description" content="在面试中, 当问到数据库的相关知识的时候, 事务是一个高频考点, 所以这部分知识需要熟练掌握.  什么是事务?对于一个概念, 首先应该知道是什么. 术语事务指的是构成单一逻辑工作单元的操作的集合. 比如 : 将钱从一个账户转到另一个账户就是一个事务. 在数据库中, 具体来说, 就是访问并可能更新各种数据项的一个程序执行单元 (unit).  事务通常由高级数据操纵语言( 代表性的是 SQL )或者">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/07/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/11/数据库之事务/">
 
 
 
 
 
-  <title>Hello World | 苏打家的富贵</title>
+  <title>数据库之事务 | 苏打家的富贵</title>
   
 
 
@@ -284,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/11/数据库之事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Victor">
@@ -301,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">数据库之事务</h1>
         
 
         <div class="post-meta">
@@ -313,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T20:31:00+08:00">
-                2019-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T22:44:04+08:00">
+                2019-04-11
               </time>
             
 
@@ -323,6 +324,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -351,15 +374,31 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>在面试中, 当问到数据库的相关知识的时候, 事务是一个高频考点, 所以这部分知识需要熟练掌握. </p>
+<h1 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务?"></a>什么是事务?</h1><p>对于一个概念, 首先应该知道是什么. 术语事务指的是构成单一逻辑工作单元的操作的集合. 比如 : 将钱从一个账户转到另一个账户就是一个事务. 在数据库中, 具体来说, 就是访问并可能更新各种数据项的一个程序执行<strong>单元</strong> (unit).  事务通常由高级数据操纵语言( 代表性的是 SQL )或者编程语言( 例如, C++ 或 Java )通过 JDBC 或 ODBC 嵌入式数据库访问书写的用户程序的执行所引起.</p>
+<h1 id="事务的四大特性-ACID"><a href="#事务的四大特性-ACID" class="headerlink" title="事务的四大特性 (ACID)"></a>事务的四大特性 (ACID)</h1><h2 id="原子性-atomicity"><a href="#原子性-atomicity" class="headerlink" title="原子性 (atomicity)"></a>原子性 (atomicity)</h2><p>原子性指的是一个事务的所有操作步骤必须作为一个单一的、不可分割的单元出现. 因为事务是不可分割的, 所以要么执行其全部内容, 要么就根本不执行. 因此, 如果一个事务开始执行, 但是由于某些原因失败, 则事务对数据库造成的任何可能的修改都要撤销. 这种”全或无”的特性称为<strong>原子性</strong>.</p>
+<h2 id="一致性-consitency"><a href="#一致性-consitency" class="headerlink" title="一致性 (consitency)"></a>一致性 (consitency)</h2><p>一致性指的是事务使得数据库从一个一致状态变为另一个一致状态. 也就是一个事务在执行之前和执行之后都必须处于一致性状态. 比如, 用户 A 和 用户 B 账户总和为 5000, 两者之间进行转账的操作, 无论如何转, 两者总和都是 5000, 这就是事务的一致性.</p>
+<h2 id="隔离性-isolation"><a href="#隔离性-isolation" class="headerlink" title="隔离性 (isolation)"></a>隔离性 (isolation)</h2><p>尽管多个事务可能并发执行, 但系统保证, 对于任何一对事务 T1 和 T2, 在 T1 看来, T2 或者在 T1 开始之前已经完成执行, 或者在 T1 完成执行之后才开始执行. 因此, 每个事务都感觉不到系统中有其他事务在并发地执行.</p>
+<h2 id="持久性-durability"><a href="#持久性-durability" class="headerlink" title="持久性 (durability)"></a>持久性 (durability)</h2><p>一个事务成功完成后, 它对数据库的改变必须是永久的, 即使出现系统故障. 这里的永久不是指永远的, 而是在下一次进行修改之前一直会保持上次修改后的状态.</p>
+<p>对于这四个特性, 其关系并不是平级关系 : </p>
+<ul>
+<li>在无并发的时候, 事务串行执行, 一定能满足隔离性. 此时只要满足原子性就能满足一致性;</li>
+<li>在有并发的时候, 多个事务并行执行, 不仅要满足原子性, 还要满足隔离性, 才能满足一致性;</li>
+</ul>
+<h1 id="一个简单的事务模型"><a href="#一个简单的事务模型" class="headerlink" title="一个简单的事务模型"></a>一个简单的事务模型</h1><p>我们通过一个简单的例子来进一步了解事务的特性, 采用一个由几个账户和一个访问和更新账户的事务集合构成的简单的银行应用. 将访问数据的操作简化为两个 :</p>
+<ul>
+<li>read (X) : 从数据库把数据项 X 传送到执行 read 操作的事务的主缓存区的一个也称为 X 的变量中.</li>
+<li>write (X) : 从执行 write 的事务的主缓存区的变量 X 中把数据项 X 传回数据库中.</li>
+</ul>
+<p>事务 T 是从账户 A 过户 ¥50 到账户 B :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T : read(A);</span><br><span class="line">		A := A - <span class="number">50</span>;</span><br><span class="line">		write(A);</span><br><span class="line">		read(B);</span><br><span class="line">		B := B + <span class="number">50</span>;</span><br><span class="line">		write(B).</span><br></pre></td></tr></table></figure>
+<p>我们通过事务 T 来逐个讲解 ACID 特性 :</p>
+<ul>
+<li><strong>一致性</strong> : 这里的一致性指的是事务执行不改变 A、B 之和.</li>
+<li><strong>原子性</strong> : 这里假设在事务 T 执行之前, 账户 A 和账户 B 中分别有 ¥100 和 ¥500. 现在假设在事务 T 执行时系统出现故障, 导致 T 的执行没有完成. 进一步假设故障发生在 write(A) 之后和 write(B) 之前. 数据库反映出来的是账户 A 中有 ¥50, 账户 B 中有 ¥500. 这次故障导致系统丢失了 ¥50. 此时 A + B 的和不再维持原状. 我们把此时的状态称为<strong>不一致状态</strong>( inconsistent state). 然后这个状态最终会被账户 A 为 ¥50, 而账户 B 为¥550 取代. 系统必然会在某一时刻处于不一致状态. 但是这种不一致状态在数据库中是不可见的. 不一致状态除了在事务执行当中出现之外, 在其他时刻是不可见的. 这就是原子性, 某个事物的所有动作要么在数据库中全部反映出来, 要么全部不反映.<br>原子性的保证需要通过<strong>日志</strong>来实现, 如果事务没能完成它的执行, 那么需要<strong>恢复系统</strong>(recovery system)来通过日志恢复旧值, 使得看上去事务从未执行过.</li>
+<li><strong>持久性</strong> : 一旦事务成功地完成执行, 系统就必须保证任何系统故障都不会引起与这次转账相关的数据丢失.持久性保证事务成功完成, 该事务对数据库的所有更新都是持久的.</li>
+<li><strong>隔离性</strong> : 当多个事务并发地执行时, 即使保持事务的一致性和原子性, 它们可能会以某种方式交叉执行, 导致不一致的状态. 事务的隔离性确保事务并发执行后的系统状态与这些事务以某种次序一个接一个地执行后的状态是等价的.</li>
+</ul>
 
       
     </div>
@@ -375,6 +414,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/事务/" rel="tag"># 事务</a>
+          
+        </div>
+      
 
       
       
@@ -384,15 +431,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/10/递归-从尾到头打印链表/" rel="next" title="递归-从尾到头打印链表">
+                <i class="fa fa-chevron-left"></i> 递归-从尾到头打印链表
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/07/qbb/" rel="prev" title="qbb">
-                qbb <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是事务"><span class="nav-number">1.</span> <span class="nav-text">什么是事务?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四大特性-ACID"><span class="nav-number">2.</span> <span class="nav-text">事务的四大特性 (ACID)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原子性-atomicity"><span class="nav-number">2.1.</span> <span class="nav-text">原子性 (atomicity)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一致性-consitency"><span class="nav-number">2.2.</span> <span class="nav-text">一致性 (consitency)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔离性-isolation"><span class="nav-number">2.3.</span> <span class="nav-text">隔离性 (isolation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久性-durability"><span class="nav-number">2.4.</span> <span class="nav-text">持久性 (durability)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单的事务模型"><span class="nav-number">3.</span> <span class="nav-text">一个简单的事务模型</span></a></li></ol></div>
             
 
           </div>
