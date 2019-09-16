@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="剑指offer,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="题目背景递归是在面试中经常出现的问题, 作为递归最为常见的一个问题就是著名的斐波数列, 关于斐波拉切数列的规律不再赘叙, 我们先给出常规答案, 用正常递归的方式完成. 解法一 : 直接递归最直接的递归, 将表达式用编程语言表示出来即可 : 12345678public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;">
-<meta name="keywords" content="剑指offer">
+<meta name="description" content="数据源数据源(DataSource), 即数据源头, 提供了应用程序所需要的数据的位置. 数据源保证了应用程序与目标数据之间的交互的规范和协议, 它可以是数据库, 文件系统等等. 数据源定义了位置信息, 用户验证信息以及交互时所需的一些特性的配置, 调用 DataSource.getConnection() 即可获得一个连接, 而无需关心连到哪个数据库. 即它封装了如何建立与数据源的连接, 向外暴">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斐波拉切数列">
-<meta property="og:url" content="http://yoursite.com/2019/05/09/斐波拉切数列/index.html">
+<meta property="og:title" content="数据源与连接池">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/数据源与连接池/index.html">
 <meta property="og:site_name" content="苏打家的富贵">
-<meta property="og:description" content="题目背景递归是在面试中经常出现的问题, 作为递归最为常见的一个问题就是著名的斐波数列, 关于斐波拉切数列的规律不再赘叙, 我们先给出常规答案, 用正常递归的方式完成. 解法一 : 直接递归最直接的递归, 将表达式用编程语言表示出来即可 : 12345678public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;">
+<meta property="og:description" content="数据源数据源(DataSource), 即数据源头, 提供了应用程序所需要的数据的位置. 数据源保证了应用程序与目标数据之间的交互的规范和协议, 它可以是数据库, 文件系统等等. 数据源定义了位置信息, 用户验证信息以及交互时所需的一些特性的配置, 调用 DataSource.getConnection() 即可获得一个连接, 而无需关心连到哪个数据库. 即它封装了如何建立与数据源的连接, 向外暴">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-31T07:27:59.045Z">
+<meta property="og:updated_time" content="2019-09-16T07:39:14.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="斐波拉切数列">
-<meta name="twitter:description" content="题目背景递归是在面试中经常出现的问题, 作为递归最为常见的一个问题就是著名的斐波数列, 关于斐波拉切数列的规律不再赘叙, 我们先给出常规答案, 用正常递归的方式完成. 解法一 : 直接递归最直接的递归, 将表达式用编程语言表示出来即可 : 12345678public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;">
+<meta name="twitter:title" content="数据源与连接池">
+<meta name="twitter:description" content="数据源数据源(DataSource), 即数据源头, 提供了应用程序所需要的数据的位置. 数据源保证了应用程序与目标数据之间的交互的规范和协议, 它可以是数据库, 文件系统等等. 数据源定义了位置信息, 用户验证信息以及交互时所需的一些特性的配置, 调用 DataSource.getConnection() 即可获得一个连接, 而无需关心连到哪个数据库. 即它封装了如何建立与数据源的连接, 向外暴">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/09/斐波拉切数列/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/数据源与连接池/">
 
 
 
 
 
-  <title>斐波拉切数列 | 苏打家的富贵</title>
+  <title>数据源与连接池 | 苏打家的富贵</title>
   
 
 
@@ -285,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/斐波拉切数列/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/数据源与连接池/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Victor">
@@ -302,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">斐波拉切数列</h1>
+          <h1 class="post-title" itemprop="name headline">数据源与连接池</h1>
         
 
         <div class="post-meta">
@@ -314,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T09:07:10+08:00">
-                2019-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T14:23:31+08:00">
+                2019-09-16
               </time>
             
 
@@ -324,28 +323,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -374,17 +351,28 @@
       
 
       
-        <h1 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h1><p>递归是在面试中经常出现的问题, 作为递归最为常见的一个问题就是著名的斐波数列, 关于斐波拉切数列的规律不再赘叙, 我们先给出常规答案, 用正常递归的方式完成.</p>
-<h1 id="解法一-直接递归"><a href="#解法一-直接递归" class="headerlink" title="解法一 : 直接递归"></a>解法一 : 直接递归</h1><p>最直接的递归, 将表达式用编程语言表示出来即可 :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( n &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">return</span> Fibonacci(n - <span class="number">1</span>) + Fibonacci(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="解法二-迭代"><a href="#解法二-迭代" class="headerlink" title="解法二 : 迭代"></a>解法二 : 迭代</h1><p>递归的优势在于理解上很直观, 代码简介, 但是在之前的博客里说过, 递归的缺点在于递归次数过多会导致栈溢出. 因为在斐波拉切数列中前两个数可以求得现在的数, 所以只需要记录两个数, 不断地迭代即可, 不需要记录所有的结果, 而导致栈溢出了.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( n &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> preNum = <span class="number">1</span>, prePreNum = <span class="number">0</span>, currentNum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;=n; i++) &#123;</span><br><span class="line">                currentNum = preNum + prePreNum;</span><br><span class="line">                prePreNum = preNum;</span><br><span class="line">                preNum = currentNum;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> currentNum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上方法的时间复杂度为 O(n).</p>
-<h1 id="解法三-矩阵快速幂"><a href="#解法三-矩阵快速幂" class="headerlink" title="解法三 : 矩阵快速幂"></a>解法三 : 矩阵快速幂</h1><p>斐波拉切公式可以通过矩阵的形式表示出来, 同时这个表示可以通过数学归纳法很简单地证明出来.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] Mul(<span class="keyword">int</span>[][] A, <span class="keyword">int</span>[][] B) &#123; <span class="comment">// 实现矩阵的乘法</span></span><br><span class="line">            <span class="keyword">int</span> Arows = A.length;</span><br><span class="line">            <span class="keyword">int</span> Acols = A[<span class="number">0</span>].length;</span><br><span class="line">            <span class="keyword">int</span> Brows = B.length;</span><br><span class="line">            <span class="keyword">int</span> Bcols = B[<span class="number">0</span>].length;</span><br><span class="line">            <span class="keyword">int</span> [][] ans = <span class="keyword">new</span> <span class="keyword">int</span>[Arows][Bcols];</span><br><span class="line">            <span class="keyword">int</span> temp;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Arows; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; Bcols; j++) &#123;</span><br><span class="line">                    temp = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; Acols; k++) &#123;</span><br><span class="line">                        temp += A[i][k]*B[k][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                    ans[i][j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        n -= <span class="number">1</span>; </span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;, &#123;<span class="number">0</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] A = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123; <span class="comment">// 快速幂</span></span><br><span class="line">            <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                result = Mul(result, A);</span><br><span class="line">            &#125;</span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">            A = Mul(A, A);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这段代码里要注意的是, 初始的 result 是一个单位矩阵.</p>
-<h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>求数 a 的 n 次幂, 可以采用二分法进行快速计算, 分为奇数和偶数的情况.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">power</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(n%<span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">      result *= a;</span><br><span class="line">    &#125;</span><br><span class="line">    n /= <span class="number">2</span>;</span><br><span class="line">    a *= a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h1><p>数据源(DataSource), 即数据源头, 提供了应用程序所需要的数据的位置. 数据源保证了应用程序与目标数据之间的交互的规范和协议, 它可以是数据库, 文件系统等等. 数据源定义了位置信息, 用户验证信息以及交互时所需的一些特性的配置, 调用 DataSource.getConnection() 即可获得一个连接, 而无需关心连到哪个数据库. <strong>即它封装了如何建立与数据源的连接, 向外暴露获取连接的接口.</strong> 应用程序连接数据库无需关注其底层如何建立的, 所以应用业务逻辑与连接数据库操作时松耦合的.</p>
+<p><strong>简而言之, 数据源负责建立与数据库的连接, 当在应用程序中访问数据库时不必编写连接数据库的代码, 可以直接从数据源获得数据库连接.</strong></p>
+<h2 id="DriverManager"><a href="#DriverManager" class="headerlink" title="DriverManager"></a>DriverManager</h2><p>JDBC( Java DataBase Connectivity, 简称 JDBC) 是 Java 中用于规范应用程序如何来访问数据库的应用程序接口(API), 它提供了查询和更新数据库中数据的方法.</p>
+<p>传统的 JDBC 时代, 我们需要写一个通用的方法来封装与数据库的建立操作 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Connection <span class="title">getConnnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">  Connection conn = <span class="keyword">null</span>;</span><br><span class="line">  Properties connectionProps = <span class="keyword">new</span> Properties();</span><br><span class="line">  connectionProps.put(<span class="string">"user"</span>, <span class="keyword">this</span>.userName);</span><br><span class="line">  connectionProps.put(<span class="string">"password"</span>, <span class="keyword">this</span>.password);</span><br><span class="line">  <span class="comment">//获取数据库连接</span></span><br><span class="line">  conn = DriverManager.getConnection (</span><br><span class="line">    <span class="string">"jdbc:"</span> + <span class="keyword">this</span>.dbms +<span class="string">"://"</span> + </span><br><span class="line">    <span class="keyword">this</span>.serverName +</span><br><span class="line">    <span class="string">":"</span> + <span class="keyword">this</span>.portNumber + <span class="string">"/"</span>,</span><br><span class="line">    connectionProps);</span><br><span class="line">  <span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的连接操作可以看到, 连接操作的方法与应用程序是紧耦合的, 不符合设计模式中的“对修改关闭, 对扩展开放”的原则</p>
+<h2 id="数据源-1"><a href="#数据源-1" class="headerlink" title="数据源"></a>数据源</h2><p>数据源就是对数据库以及数据库交互操作的抽象, 它封装了目标源的位置信息, 验证信息和建立与关闭连接的操作. 数据源可以看出程序中的一个组件, 它把传统中需要在代码里编写配置信息和获取连接等操作抽象出一个规范或者接口, 这样不同的第三方可以自行实现该接口提供不同的策略. 这样, 数据源就是对应用程序是透明的, 开发者只需要为应用程序配置特定的数据源即可与数据库进行连接等操作. 当需要更新数据库服务器或者数据库种类时, 只需要修改配置中信息即可, 无需修改程序代码.</p>
+<p>数据源大致分为 2 种 : <strong>不提供连接池和提供连接池管理</strong></p>
+<p>Spring 中提供的数据源就是不提供连接池功能的, 比如 DrivcerManagerDataSource, 该数据源对于应用程序的每一个连接请求都建立新的连接, 当应用程序使用完毕后, 再执行销毁操作. 当与数据库交互频繁时, 会严重影响程序的性能. 所以 Spring 仅建议我们在测试中使用该数据源.</p>
+<h1 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h1><p>数据库连接是一种关键的、有限的、昂贵的资源, 所以对数据库连接的管理能显著影响到整个应用程序的伸缩性和健壮性, 影响到程序的性能指标. 数据库连接池就是针对这个问题提出来的.</p>
+<p>连接复用. 通过建立一个数据库连接池以及一套连接使用管理策略, 使得一个数据库连接可以得到高效、安全的复用, 避免了数据库连接频繁建立、关闭的开销.</p>
+<p>对于共享资源, 有一个很著名的设计模式 : 资源池. 该模式正是为了解决资源频繁分配、释放所造成的问题的. 所以数据库连接池就是提供一套高效的连接分配、使用策略, 最终目标是实现连接的高效、安全的复用.</p>
+<p><strong>数据库连接池的基本原理是在内部对象池中维护一定数量的数据库连接, 并对外暴露数据库连接获取和返回方法.</strong></p>
+<h1 id="Spring-中数据库连接池"><a href="#Spring-中数据库连接池" class="headerlink" title="Spring 中数据库连接池"></a>Spring 中数据库连接池</h1><p>在引入 spring-boot-starter-jdbc 后, 内部包含了 tomcat-jdbc 包, 里面有 tomcat 连接池, 让后通过自动配置 DataSourceAutoConfigurer 创建了 DataSource 对象.</p>
+<p>SpringBoot 创建默认 DataSource 时, 规则如下 :</p>
+<ul>
+<li>优先寻找创建 Tomcat 连接池</li>
+<li>如果没有 Tomcat 连接池, 会查找创建 HikariCP</li>
+<li>如果没有 HikariCP 连接池, 会查找创建 dbcp</li>
+<li>如果没有 dbcp 连接池, 会查找创建 dbcp2</li>
+<li>可以使用 spring.datasource.type 属性指定连接池类型<br>spring.datasource.type = org.apache.commons.dbcp.BasicDataSource</li>
+</ul>
 
       
     </div>
@@ -400,12 +388,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/剑指offer/" rel="tag"># 剑指offer</a>
-          
-        </div>
-      
 
       
       
@@ -415,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/23/PostgreSQL安装/" rel="next" title="PostgreSQL安装">
-                <i class="fa fa-chevron-left"></i> PostgreSQL安装
+              <a href="/2019/07/24/Java的序列化和反序列化/" rel="next" title="Java的序列化和反序列化">
+                <i class="fa fa-chevron-left"></i> Java的序列化和反序列化
               </a>
             
           </div>
@@ -424,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/24/Java的序列化和反序列化/" rel="prev" title="Java的序列化和反序列化">
-                Java的序列化和反序列化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目背景"><span class="nav-number">1.</span> <span class="nav-text">题目背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法一-直接递归"><span class="nav-number">2.</span> <span class="nav-text">解法一 : 直接递归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法二-迭代"><span class="nav-number">3.</span> <span class="nav-text">解法二 : 迭代</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法三-矩阵快速幂"><span class="nav-number">4.</span> <span class="nav-text">解法三 : 矩阵快速幂</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速幂"><span class="nav-number">5.</span> <span class="nav-text">快速幂</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据源"><span class="nav-number">1.</span> <span class="nav-text">数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DriverManager"><span class="nav-number">1.1.</span> <span class="nav-text">DriverManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源-1"><span class="nav-number">1.2.</span> <span class="nav-text">数据源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接池"><span class="nav-number">2.</span> <span class="nav-text">连接池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-中数据库连接池"><span class="nav-number">3.</span> <span class="nav-text">Spring 中数据库连接池</span></a></li></ol></div>
             
 
           </div>
