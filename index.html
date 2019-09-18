@@ -377,6 +377,56 @@
 <li>如果没有 dbcp 连接池, 会查找创建 dbcp2</li>
 <li>可以使用 spring.datasource.type 属性指定连接池类型<br>spring.datasource.type = org.apache.commons.dbcp.BasicDataSource</li>
 </ul>
+<p><strong>Spring Boot 2.x</strong></p>
+<ul>
+<li>默认使用 HikariCP</li>
+<li>配置 spring.datasource.hikari.* 配置</li>
+</ul>
+<p><strong>Spring Boot 1.x</strong></p>
+<ul>
+<li><p>默认使用 Tomcat 连接池, 需要移除 tomcat-jdbc 依赖</p>
+</li>
+<li><p>spring.datasource.type = com.zaxxer.hikari.HikariDataSource</p>
+</li>
+</ul>
+<h2 id="HikariCP"><a href="#HikariCP" class="headerlink" title="HikariCP"></a>HikariCP</h2><p>HikariCP 为什么快?</p>
+<ol>
+<li>字节码级别优化(很多方法通过 JavaAssist 生成)</li>
+<li>大量小改进<ul>
+<li>用 FastStatementList 代替 ArrayList</li>
+<li>无锁集合 ConcurrentBag</li>
+<li>代理类的优化</li>
+</ul>
+</li>
+</ol>
+<p>常用 HikariCP 配置参数</p>
+<ul>
+<li>spring.datasource.hikari.maximumPoolSize=10</li>
+<li>spring.datasource.hikari.minimumldle=10</li>
+<li>spring.datasource.hikari.idleTimeout=600000</li>
+<li>spring.datasource.hikari.connectionTimeout=30000</li>
+<li>spring.datasource.hikari.maxLifetime=1800000</li>
+</ul>
+<h2 id="Alibaba-Druid"><a href="#Alibaba-Druid" class="headerlink" title="Alibaba Druid"></a>Alibaba Druid</h2><p><strong>实用的功能</strong></p>
+<ul>
+<li>详细的监控</li>
+<li>ExceptionSorter, 针对主流数据库的返回码都有支持</li>
+<li>SQL 防注入</li>
+<li>内置加密配置</li>
+<li>众多扩展点, 方便进行定制</li>
+</ul>
+<p><strong>配置</strong></p>
+<p>直接配置 DruidDataSource</p>
+<p>通过 druid-spring-boot-starter</p>
+<ul>
+<li>spring.datasource.druid.* 进行配置</li>
+</ul>
+<p><strong>Druid Filter</strong></p>
+<ul>
+<li>用于定制连接池操作的各种环节</li>
+<li>可以继承 FilterEventAdapter 以便方便地实现 Filter</li>
+<li>修改 META-INF/druid-filter.properties 增加 Filter 配置</li>
+</ul>
 
           
         
