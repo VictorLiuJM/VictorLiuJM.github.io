@@ -284,6 +284,643 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/工厂模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏打家的富贵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/工厂模式/" itemprop="url">工厂模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T09:41:16+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/观察者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏打家的富贵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/08/观察者模式/" itemprop="url">观察者模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T16:04:21+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="观察者模式的定义"><a href="#观察者模式的定义" class="headerlink" title="观察者模式的定义"></a>观察者模式的定义</h1><p>观察者模式(也被称为发布-订阅模式)定义了一种对象之间的一对多的依赖关系, 当一个对象(主题, Subject)状态改变的时候, 它的所有的依赖对象(观察者, Observer)都会被告知变化并自动更新状态.</p>
+<p>使用场景 :</p>
+<ul>
+<li>一个抽象模型有两个方面, 其中一个依赖于另一个方面. 将这些方面封装在独立的对象中使它们可以各自独立地改变和复用.</li>
+<li>一个对象的改变将导致其他一个或多个对象也发送改变, 而不知道具体有多少对象将发送改变, 可以降低对象之间的耦合度.</li>
+<li>一个对象必须通知其他对象, 而不知道这些对象是谁.</li>
+</ul>
+<h1 id="认识观察者模式"><a href="#认识观察者模式" class="headerlink" title="认识观察者模式"></a>认识观察者模式</h1><p>Head First 设计模式中的实例 : 需要为气象观测站建立一个应用, 利用 WeatherData 对象取得数据, 并更新三个布告板 : 目前状况、气象统计和天气预报.</p>
+<p>在这个实例中, WeatherData 一旦发生变化, 那么三个布告板也应该被通知, 而发生变化.</p>
+<p>基本的对象、观察者和显示接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span></span>; <span class="comment">// 注册观察者</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span></span>; <span class="comment">// 删除观察者</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span></span>;  <span class="comment">// 通知观察者</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">float</span> temp, <span class="keyword">float</span> humidity, <span class="keyword">float</span> pressure)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisplayElement</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>weatherData 对象即 Subject 实体</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList observers;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> temperature;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> humidity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> pressure;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        observers = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        observers.add(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = observers.indexOf(o);</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>)</span><br><span class="line">            observers.remove(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; observers.size(); i++) &#123;</span><br><span class="line">            Observer observer = (Observer) observers.get(i);</span><br><span class="line">            observer.update(temperature, humidity, pressure);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measurementsChanged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        notifyObserver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMeasurements</span><span class="params">(<span class="keyword">float</span> temperature, <span class="keyword">float</span> humidity, <span class="keyword">float</span> pressure)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temperature = temperature;</span><br><span class="line">        <span class="keyword">this</span>.humidity = humidity;</span><br><span class="line">        <span class="keyword">this</span>.pressure = pressure;</span><br><span class="line">        measurementsChanged();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>currentConditionsDisplay 对象即 Observer</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CurrentConditionsDisplay</span> <span class="keyword">implements</span> <span class="title">Observer</span>, <span class="title">DisplayElement</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> temperature;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> humidity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> pressure;</span><br><span class="line">    <span class="keyword">private</span> Subject weatherData;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CurrentConditionsDisplay</span><span class="params">(Subject weatherData)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.weatherData = weatherData;</span><br><span class="line">        weatherData.registerObserver(<span class="keyword">this</span>); <span class="comment">// 在初始化一个观察者的时候, 需要注册一下</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Current conditions: "</span> + temperature + <span class="string">"F degrees and "</span> + humidity + <span class="string">"% humidity and "</span> + pressure + <span class="string">"Pa"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">float</span> temp, <span class="keyword">float</span> humidity, <span class="keyword">float</span> pressure)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temperature = temp;</span><br><span class="line">        <span class="keyword">this</span>.humidity = humidity;</span><br><span class="line">        <span class="keyword">this</span>.pressure = pressure;</span><br><span class="line">        display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherStation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        WeatherData weatherData = <span class="keyword">new</span> WeatherData();</span><br><span class="line">        <span class="comment">// 每次在新建一个布告牌的时候， 都向 weatherData 注册了一个新的观察者</span></span><br><span class="line">        CurrentConditionsDisplay currentConditionsDisplay = <span class="keyword">new</span> CurrentConditionsDisplay(weatherData);</span><br><span class="line"></span><br><span class="line">        weatherData.setMeasurements(<span class="number">80</span>, <span class="number">65</span>, <span class="number">30.4f</span>);</span><br><span class="line">        weatherData.setMeasurements(<span class="number">82</span>, <span class="number">70</span>, <span class="number">29.2f</span>);</span><br><span class="line"></span><br><span class="line">        weatherData.removeObserver(currentConditionsDisplay);</span><br><span class="line">        weatherData.setMeasurements(<span class="number">78</span>, <span class="number">90</span>, <span class="number">29.2f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Current conditions: <span class="number">80.0F</span> degrees and <span class="number">65.0</span>% humidity and <span class="number">30.4</span>Pa</span><br><span class="line">Current conditions: <span class="number">82.0F</span> degrees and <span class="number">70.0</span>% humidity and <span class="number">29.2</span>Pa</span><br></pre></td></tr></table></figure>
+<p>从结果可以看到, 在删除了 currentConditionsDisplay 这个观察者之后, 就不会显示 weatherData 的变化了.</p>
+<h1 id="Java-内置观察者模式-java-util-Observable"><a href="#Java-内置观察者模式-java-util-Observable" class="headerlink" title="Java 内置观察者模式(java.util.Observable)"></a>Java 内置观察者模式(java.util.Observable)</h1><p>相关源码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Observable</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">addObserver</span><span class="params">(Observer o)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">deleteObserver</span><span class="params">(Observer o)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">deleteObservers</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable o, Object arg)</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>用 Java 内置的观察者模式来实现上面的代码功能</p>
+<p>WeatherData 直接实现 Observable 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Observable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> <span class="keyword">extends</span> <span class="title">Observable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> temperature;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> humidity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> pressure;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measurementsChanged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        setChanged();</span><br><span class="line">        notifyObservers();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMeasurements</span><span class="params">(<span class="keyword">float</span> temperature, <span class="keyword">float</span> humidity, <span class="keyword">float</span> pressure)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.temperature = temperature;</span><br><span class="line">        <span class="keyword">this</span>.humidity = humidity;</span><br><span class="line">        <span class="keyword">this</span>.pressure = pressure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTemperature</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.temperature;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getHumidity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.humidity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getPressure</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.pressure;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>DisplayElement 接口 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DisplayElement</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CurrentConditionsDisplay 实现 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Observer;</span><br><span class="line"><span class="keyword">import</span> java.util.Observable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CurrentConditionsDisplay</span> <span class="keyword">implements</span> <span class="title">Observer</span>, <span class="title">DisplayElement</span> </span>&#123;</span><br><span class="line">    Observable observable;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> temperature;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> humidity;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CurrentConditionsDisplay</span><span class="params">(Observable observable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.observable = observable;</span><br><span class="line">        observable.addObserver(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable o, Object arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(o <span class="keyword">instanceof</span> WeatherData) &#123;</span><br><span class="line">            WeatherData weatherData = (WeatherData) o;</span><br><span class="line">            <span class="keyword">this</span>.temperature = weatherData.getTemperature();</span><br><span class="line">            <span class="keyword">this</span>.humidity = weatherData.getHumidity();</span><br><span class="line">            display();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Current conditions: "</span> + temperature + <span class="string">"F degrees and "</span> + humidity + <span class="string">"% humidity"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="观察者模式的特点"><a href="#观察者模式的特点" class="headerlink" title="观察者模式的特点"></a>观察者模式的特点</h1><p>观察者模式实现了 <strong>松耦合的设计原则</strong> : 当两个对象之间松耦合, 它们依然可以交互, 但是不太清楚彼此的细节. 还有 <strong>针对接口编程, 不针对实现编程的原则</strong>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/06/装饰者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏打家的富贵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/06/装饰者模式/" itemprop="url">装饰者模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-06T20:50:39+08:00">
+                2019-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#装饰者模式的定义</p>
+<p>Wiki 百科上的定义 :</p>
+<blockquote>
+<p>In object-oriented programming, the decorator pattern is  a design pattern that allows behavior to be  added to an individual object, either statically or dynamically, without affecting the behavior of the other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.</p>
+</blockquote>
+<p>翻译过来就是 :</p>
+<blockquote>
+<p>在面向对象编程中, 装饰者模式这种设计模式可以动态或静态地向单个对象添加行为而不影响来自该类的其他对象. 装饰者模式通常有助于遵守单一职责原则, 因为它允许将类通过特定关注区域进行功能性的划分.</p>
+</blockquote>
+<p>即装饰者模式可以在不改变原类和使用继承的情况下, 动态地扩展一个对象的功能. 提供了比继承更有弹性的替代方案.</p>
+<h1 id="认识装饰者模式"><a href="#认识装饰者模式" class="headerlink" title="认识装饰者模式"></a>认识装饰者模式</h1><p><strong>Head First 设计模式中的实例 :</strong> 星巴兹 (Starbuzz) 是以扩张速度最快而闻名的咖啡连锁店. 现在需要设计它的订单系统. 购买咖啡时, 可以要求在其中加入各种调料, 例如 : 蒸奶、豆浆、摩卡或覆盖奶泡, 所以订单系统必须考虑到这些调料部分.</p>
+<p>被装饰者角色的抽象类 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String description = <span class="string">"unknown Beverage"</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> description;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四个饮料的具体实现类 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DarkRoast</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DarkRoast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    description = <span class="string">"Dark Roast Coffee"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2.99</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Decaf</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Decaf</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    description = <span class="string">"Decaf Coffee"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2.09</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Espresso</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Espresso</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    description = <span class="string">"Espresso Coffee"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.99</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBlend</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">HouseBlend</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    description = <span class="string">"HouseBlend Coffee"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.89</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象调料装饰者, 为装饰者角色 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CondimentDecorator</span> <span class="keyword">extends</span> <span class="title">Beverge</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四个具体的调料装饰者实现类 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Milk</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">  Beverage beverage;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Milk</span><span class="params">(Beverage beverage)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> beverage.getDescription() + <span class="string">", Milk"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.30</span> + beverage.cost();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mocha</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">  Beverage beverage;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Mocha</span><span class="params">(Beverage beverage)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> beverage.getDescription() + <span class="string">", Mocha"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.20</span> + beverage.cost();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soy</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">  Beverage beverage;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Soy</span><span class="params">(Beverage beverage)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> beverage.getDescription() + <span class="string">", Soy"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.15</span> + beverage.cost();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Whip</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">  Beverage beverage;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Whip</span><span class="params">(Beverage beverage)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> beverage.getDescription() + <span class="string">", Whip"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.18</span> + beverage.cost();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试代码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarbuzzCoffee</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Beverage beverage1 = <span class="keyword">new</span> Espresso();</span><br><span class="line"></span><br><span class="line">        System.out.println(beverage1.getDescription() + <span class="string">" -------- "</span> + beverage1.cost());</span><br><span class="line">        </span><br><span class="line">        Beverage beverage2 = <span class="keyword">new</span> DarkRoast();</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Whip(beverage2);</span><br><span class="line"></span><br><span class="line">        System.out.println(beverage2.getDescription() + <span class="string">" --------- "</span> + beverage2.cost());</span><br><span class="line">        </span><br><span class="line">        Beverage beverage3 = <span class="keyword">new</span> HouseBlend();</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Soy(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Mocha(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Whip(beverage3);</span><br><span class="line"></span><br><span class="line">        System.out.println(beverage3.getDescription() + <span class="string">" --------- "</span> + beverage3.cost());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Espresso Coffee -------- <span class="number">1.99</span></span><br><span class="line">Dark Roast Coffee, Mocha, Mocha, Whip --------- <span class="number">3.5700000000000007</span></span><br><span class="line">HouseBlend Coffee, Soy, Mocha, Whip --------- <span class="number">1.42</span></span><br></pre></td></tr></table></figure>
+<p>从上面的示例中看出, 我们以饮料为主体, 在运行时用调料装饰饮料, 需要注意的是这里的不同类的饮料和调料具有相同的超类型. 步骤如下 :</p>
+<ol>
+<li>拿一个深焙咖啡 (DarkRoast) 对象</li>
+<li>以摩卡 (Mocha) 对象装饰它</li>
+<li>以奶泡 (Whip) 对象装饰它</li>
+<li>调用 cost() 方法, 并依赖委托 (delegate) 将调料的价格加上去</li>
+</ol>
+<p>#装饰者模式的特点</p>
+<ul>
+<li><p>装饰者模式遵循 <strong>开发-关闭原则</strong>, 即类应该对扩展开发, 对修改关闭.</p>
+</li>
+<li><p>装饰者与被装饰者对象具有相同的超类型.</p>
+</li>
+<li><p>可以用一个或多个装饰者包装一个对象.</p>
+</li>
+<li><p>用运行时扩展来取代编译时继承.</p>
+</li>
+<li><p>继承设计子类的行为, 是在编译时静态决定的, 用组合的做法扩展对象的行为, 可以在运行时动态的进行扩展.</p>
+</li>
+<li><p>装饰者可以在被装饰者的行为之前与/或之后, 加上自己的行为, 以达到特点的目的.</p>
+</li>
+<li><p>装饰者模式也使用了继承, 但是使用继承达到类型匹配, 而不是利用继承获得行为.</p>
+</li>
+<li><p>对象组合获得新的行为, 行为从哪里来呢? 当我们将装饰者与组件组合时, 就是在加入新的行为, 所得到的新的行为, 并不是由继承得自超类, 而是由组合对象得来的.</p>
+</li>
+<li><p>因为装饰者必须能取代被装饰者, 所以装饰者需要和被装饰者有相同的接口.</p>
+</li>
+</ul>
+<h1 id="Java-中的装饰者模式-java-io-类"><a href="#Java-中的装饰者模式-java-io-类" class="headerlink" title="Java 中的装饰者模式 (java.io 类)"></a>Java 中的装饰者模式 (java.io 类)</h1><p>Java I/O 引出装饰者模式的一个“缺点” : 利用装饰者模式, 会造成设计中存在大量的小类.</p>
+<p><img src="/Users/mac/blog/source/_posts/装饰者模式/装饰者.png" alt></p>
+<p>示例 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UpperCaseInputStream</span> <span class="keyword">extends</span> <span class="title">FilterInputStream</span> </span>&#123; <span class="comment">//继承InputStream</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//组合InputStream</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">UpperCaseInputStream</span><span class="params">(InputStream in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(in);</span><br><span class="line">    &#125;</span><br><span class="line">　　<span class="comment">//重写方法　</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> c=<span class="keyword">super</span>.read();  <span class="comment">//此处直接调用super方法就会执行被装饰者的read()方法，因为装饰者抽象类的read()方法中有语句this.InputStream.read()。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (c==-<span class="number">1</span>?c:Character.toUpperCase(c));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> c;</span><br><span class="line">        <span class="comment">//使用时，仅需要将被装饰者作为参数，构建装饰者对象即可</span></span><br><span class="line">        InputStream in=<span class="keyword">new</span> UpperCaseInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"D:\\JAVAworkspace\\ProgramTest\\src\\StreamDemo.java"</span>));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>((c=in.read())&gt;=<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.print((<span class="keyword">char</span>)c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/Lambda表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Victor">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏打家的富贵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/20/Lambda表达式/" itemprop="url">Lambda表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T09:58:13+08:00">
+                2019-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="求新知"><a href="#求新知" class="headerlink" title="求新知"></a>求新知</h1><p>前几天 Fenng 大在星球里说 技术人, 了解趋势, 做判断, 其实挺难的, 越是这样, 越是平时要花点心思, 在这方面提高一点认知. Fenng 大说的是整个行业的趋势与走向, 了解新的东西, 自己不太熟悉的东西. 在技术上同样也是, 不要总用那些用习惯的旧的东西, 要学习新的东西进行输入. 尽管 Lambda 表达式已经是很久之前的更新了, 但是一直没怎么用到过, 所以现在来专门学习一下.</p>
+<h1 id="Lambda-表达式简介"><a href="#Lambda-表达式简介" class="headerlink" title="Lambda 表达式简介"></a>Lambda 表达式简介</h1><p>Lambda 表达式可以看成是一段代码的简化表示. Lambda 表达式本身就是一个接口的实现, 而能实现 Lambda 表达式的接口必须是<strong>函数式接口</strong>. Lambda 表达式免去了使用匿名方法的麻烦, 给 Java带来强大的函数化编程能力</p>
+<p>#函数式接口</p>
+<p>函数式接口就是只显式声明一个<strong>抽象方法</strong>的接口. Java 8 提供了一个专门注解 @FunctionalInterface 来说明这个接口是一个函数式接口, 当接口中声明的抽象方法多于或少于一个时就会报错.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">int</span> <span class="title">LambdaInterface</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">doSomeShit</span><span class="params">(String s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#Lambda 表达式格式</p>
+<p>Lambda 表达式的语法格式如下 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(parameters) -&gt; expression</span><br><span class="line">或</span><br><span class="line">(parameters) -&gt; &#123;statements;&#125;</span><br></pre></td></tr></table></figure>
+<p>Lambda 表达式的重要特征 :</p>
+<ul>
+<li>可选类型声明 : 不需要声明参数类型, 编译器可以统一识别参数值</li>
+<li>可选的参数圆括号 : 一个参数无需定义圆括号, 但多个参数需要定义圆括号</li>
+<li>可选的大括号 : 如果主体包含了一个语句, 就不需要使用大括号</li>
+<li>可选的返回关键字 : 如果主体只有一个表达式返回值则编译器会自动返回值, 大括号需要指定表达式返回了一个数值</li>
+</ul>
+<p>#四大函数式接口的 Lamdba 实现</p>
+<p> 常用的函数式接口主要是在 java.util.function 包中</p>
+<p>Java 内置的四大函数式接口分别是 :</p>
+<table>
+<thead>
+<tr>
+<th>函数式接口</th>
+<th>参数类型</th>
+<th>返回类型</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer<t><br>消费型接口</t></td>
+<td>T</td>
+<td>void</td>
+<td>对类型为 T 的对象应用操作, <br>包含方法 :void accept(T t)</td>
+</tr>
+<tr>
+<td>Supplier<t><br>供给型接口</t></td>
+<td>无</td>
+<td>T</td>
+<td>返回类型为 T 的对象, <br>包含方法 : T get()</td>
+</tr>
+<tr>
+<td>Function&lt;T, R&gt;<br>函数型接口</td>
+<td>T</td>
+<td>R</td>
+<td>对类型为 T 的对象应用操作,<br>并返回结果. 结果是 R 类型的对象.<br>包含方法 : R apply( T t)</td>
+</tr>
+<tr>
+<td>Predicate<t><br>断定型接口</t></td>
+<td>T</td>
+<td>boolean</td>
+<td>确定类型为 T 的对象是否满足某种约束, <br>并返回 boolean 值<br>包含方法 : boolean test(T t)</td>
+</tr>
+</tbody>
+</table>
+<p>学习一下这四个函数式接口的源码 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*Represents an operation that accepts a single input argument and returns no result</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">  *Performs this operation on the given argument</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">default</span> Consumer&lt;T&gt; <span class="title">andThen</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; after)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(after);</span><br><span class="line">    <span class="keyword">return</span> (T t) -&gt; &#123; accept(t); after.accept(t); &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*Represents a predicate (boolean-valued function) of one argument.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@FuntionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Predicate</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// Evaluates this predicate on the given argument</span></span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">and</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(other);</span><br><span class="line">    <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">negate</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> (t) -&gt; !test(t);&#125;</span><br><span class="line">  <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">or</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">    Object.requireNonNull(other);</span><br><span class="line">    <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">isEqual</span><span class="params">(Object targetRef)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">null</span> == targetRef)</span><br><span class="line">      			? Object::isNull</span><br><span class="line">            : Object -&gt; targetRef.equals(object);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Represents a supplier of results</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Supplier</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// Gets a result</span></span><br><span class="line">  <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Represents a function that accepts one argument and produces a result</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// Applies this function to the given argument</span></span><br><span class="line">  <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line">  <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;V, R&gt; <span class="title">compose</span><span class="params">(Function&lt;? <span class="keyword">super</span> V, ? extends T&gt; before)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(before);</span><br><span class="line">    <span class="keyword">return</span> (V v) -&gt; apply(before.apply(v));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;T, V&gt; <span class="title">andThen</span><span class="params">(Function&lt;? <span class="keyword">super</span> R, ? extends V&gt; after)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(after);</span><br><span class="line">    <span class="keyword">return</span> (T t) -&gt; apply(after.apply(t));</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">static</span> &lt;T&gt; <span class="function">Function&lt;T, T&gt; <span class="title">identity</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> t -&gt; t;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是四个函数式接口的实例 :</p>
+<p><strong>Consumer 接口实例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// happyTime 方法接受一个函数式接口, 用匿名内部类来实现</span></span><br><span class="line">        happyTime(<span class="number">500</span>, <span class="keyword">new</span> Consumer&lt;Double&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Double aDouble)</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"Play time is over"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyTime</span><span class="params">(<span class="keyword">double</span> money, Consumer&lt;Double&gt; con)</span> </span>&#123;</span><br><span class="line">        con.accept(money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 下面用 Lambda 表达式来实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// money 是 accept 函数中的参数</span></span><br><span class="line">        happyTime(<span class="number">500</span>, money -&gt; System.out.println(<span class="string">"Happy time is over"</span>)); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyTime</span><span class="params">(<span class="keyword">double</span> money, Consumer&lt;Double&gt; con)</span> </span>&#123;</span><br><span class="line">        con.accept(money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Supplier 供给型接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = getList(<span class="number">10</span>, ()-&gt;(<span class="keyword">int</span>)(Math.random()*<span class="number">100</span>));</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getList</span><span class="params">(<span class="keyword">int</span> size, Supplier&lt;Integer&gt; supplier)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            Integer num = supplier.get();</span><br><span class="line">            list.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Function 函数型接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String strTrim = strHandler(<span class="string">"\t\t\t asdfghjkl   "</span>, (e) -&gt;e.trim());</span><br><span class="line">        System.out.println(strTrim);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">strHandler</span><span class="params">(String str, Function&lt;String, String &gt; fun)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fun.apply(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Predicate 断言型接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = Arrays.asList(<span class="string">"yyf"</span>,<span class="string">"zhou"</span>,<span class="string">"longdd"</span>,<span class="string">"DD"</span>);</span><br><span class="line">        List&lt;String&gt; li = getList(list, (l)-&gt;l.length()&gt;<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span>(String str:li)</span><br><span class="line">            System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getList</span><span class="params">(List&lt;String&gt; list, Predicate&lt;String&gt; pre)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; newList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String str : list) &#123;</span><br><span class="line">            <span class="keyword">if</span>(pre.test(str))</span><br><span class="line">                newList.add(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#Optional<t>、stream() 等</t></p>
+<p>Optional 与 stream 都是 Java 8 的新特性, 也常与 Lambda 表达式一起使用, 后面再进行学习.</p>
+<p>To be continued .</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/Project-Lombok-简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,6 +1020,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.EqualsAndHashCode;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EqualsAndHashCode</span>(exclude=&#123;<span class="string">"id"</span>, <span class="string">"shape"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsAndHashCodeExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">int</span> transientVar = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> score;</span><br><span class="line">  <span class="keyword">private</span> Shape shape = <span class="keyword">new</span> Square(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@EqualsAndHashCode</span>(callSuper=<span class="keyword">true</span>)</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> width, height;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.width = width;</span><br><span class="line">      <span class="keyword">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="ToString"><a href="#ToString" class="headerlink" title="@ToString"></a>@ToString</h2><p>类使用 @ToString 注解, Lombok 会生成一个 toString(), 默认情况下, 会输出类名、所有属性.</p>
 <h2 id="NoArgsConstructor、-RequiredArgsConstructor-和-AllArgsConstructor"><a href="#NoArgsConstructor、-RequiredArgsConstructor-和-AllArgsConstructor" class="headerlink" title="@NoArgsConstructor、@RequiredArgsConstructor 和 @AllArgsConstructor"></a>@NoArgsConstructor、@RequiredArgsConstructor 和 @AllArgsConstructor</h2><p>无参构造器、部分参数构造器、全参构造器</p>
+<h2 id="Builder"><a href="#Builder" class="headerlink" title="@Builder"></a>@Builder</h2><p>@Builder 声明实体, 表示可以进行 Builder 方式初始化, 即使用 ==“.属性名(属性值)”== 的方法进行属性设置, 再调用 build() 方法就可以声明对象.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String bar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.builder().id(rs.getLong(<span class="number">1</span>)).bar(rs.getString(<span class="number">2</span>)).build();</span><br></pre></td></tr></table></figure>
 <h1 id="Lombok-工作原理"><a href="#Lombok-工作原理" class="headerlink" title="Lombok 工作原理"></a>Lombok 工作原理</h1><p>使用 Lombok的过程中, 就是用注解来自动生成一些代码, 那么具体的原理是怎样的呢?</p>
 <p>核心之处在于对于注解的处理, JDK5 引入注解的同时, 也提供了两种解析方式</p>
 <ul>
@@ -1323,400 +1962,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/递归-从尾到头打印链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Victor">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="苏打家的富贵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/10/递归-从尾到头打印链表/" itemprop="url">递归-从尾到头打印链表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T10:03:21+08:00">
-                2019-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h1><p>在牛客网的剑指 offer 编程题中, “从尾到头打印链表”, 本题的思路并不是很难, 通过函数递归或者借助一个栈都可以实现. 这两种解决方法又是有一定的相关性的. 递归的本质就是栈 !</p>
-<h1 id="具体解决代码"><a href="#具体解决代码" class="headerlink" title="具体解决代码"></a>具体解决代码</h1><p>借助一个栈实现代码 :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*    public class ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        ListNode next = null;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*        ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">*            this.val = val;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*    &#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(listNode.val);</span><br><span class="line">            listNode = listNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!stack.empty()) &#123;</span><br><span class="line">            list.add(stack.peek());</span><br><span class="line">            stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运用递归实现代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*    public class ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        ListNode next = null;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*        ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">*            this.val = val;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*    &#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(); </span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">            printListFromTailToHead(listNode.next);</span><br><span class="line">            list.add(listNode.val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最开始的时候用这个思路总报错, 后来才发现必须将 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*    public class ListNode &#123;</span><br><span class="line">*        int val;</span><br><span class="line">*        ListNode next = null;</span><br><span class="line">*</span><br><span class="line">*        ListNode(int val) &#123;</span><br><span class="line">*            this.val = val;</span><br><span class="line">*        &#125;</span><br><span class="line">*    &#125;</span><br><span class="line">*</span><br><span class="line">*/</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;(); </span><br><span class="line">    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) &#123;</span><br><span class="line">        if(listNode != null) &#123;</span><br><span class="line">            printListFromTailToHead(listNode.next);</span><br><span class="line">            list.add(listNode.val);</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最开始的时候用这个思路总报错, 后来才发现必须将 ArrayList<integer> list = new ArrayList&lt;&gt;(); 这句代码放在函数的外面, 因为递归就是要不断地调用这个函数, 所以会不断地执行这个初始化的操作, 从而报错.</integer></p>
-<h1 id="递归和栈的相关性分析"><a href="#递归和栈的相关性分析" class="headerlink" title="递归和栈的相关性分析"></a>递归和栈的相关性分析</h1><p>递归的基本思想是将一个规模较大的问题分解为规模较小的多个子问题, 而每一个子问题都可以拆解成多个更小的子问题. 最重要的是子问题可以解决, 然后基于子问题从而解决更大的问题.</p>
-<p>所以递归解决的是有依赖顺序关系的多个问题.</p>
-<p>假设依赖关系如下 :</p>
-<p>[A] ——依赖——&gt; [B] ——依赖 ——&gt; [C]</p>
-<p>由于A、B、C 之间有依赖关系, 所以要解决问题 A, 需要先解决问题 B; 要解决问题 B, 需要先解决问题 C; 所以这个问题的解决顺序如下 :</p>
-<p>先解决 C, 然后再解决 B, 最后解决 A.</p>
-<h2 id="从函数调用看广义递归"><a href="#从函数调用看广义递归" class="headerlink" title="从函数调用看广义递归"></a>从函数调用看广义递归</h2><p>函数的调用就是一个广义的递归过程 :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fun_A()</span><br><span class="line">&#123;</span><br><span class="line">  fun_B();</span><br><span class="line">&#125;</span><br><span class="line">fun_B()</span><br><span class="line">&#123;</span><br><span class="line">  fun_C();</span><br><span class="line">&#125;</span><br><span class="line">fun_C()</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体的调用过程如下 :</p>
-<p>调用函数 A;</p>
-<p>调用函数 B;</p>
-<p>调用函数 C;</p>
-<p>函数 C 返回;</p>
-<p>函数 B 返回;</p>
-<p>函数 A 返回;</p>
-<h2 id="狭义递归函数"><a href="#狭义递归函数" class="headerlink" title="狭义递归函数"></a>狭义递归函数</h2><p>当上面的 A, B, C 都是同一个函数时, 即函数内调用函数自身. 递归对问题的处理, 遵循了先进后出的原则, 和栈的原则是一致的.</p>
-<p>使用递归函数时, 最大的问题就是当递归函数的递归次数很大的时候, 会导致函数栈溢出而死机. 每当调用一个函数时, 在这个函数执行之前都会将之前的代码地址 (也就是调用点) 入栈, 等被调用的函数执行完之后将地址出栈, 程序根据这个数据返回调用点. 当递归次数多的时候, 只会入栈不会出栈, 于是堆栈就被挤爆了. 一般操作系统分配给一个进程的栈空间是 2M.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/qbb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Victor">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="苏打家的富贵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/07/qbb/" itemprop="url">qbb</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T20:47:56+08:00">
-                2019-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="qq7"><a href="#qq7" class="headerlink" title="qq7"></a>qq7</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Victor">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="苏打家的富贵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/07/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T20:31:00+08:00">
-                2019-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1760,7 +2012,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1782,7 +2034,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
